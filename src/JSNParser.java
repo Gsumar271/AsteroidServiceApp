@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.util.JsonReader;
 import android.util.JsonToken;
@@ -11,9 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by eugenesumaryev on 11/15/17.
- */
 
 public class JSNParser {
 
@@ -93,33 +90,6 @@ public class JSNParser {
         reader.endObject();
 
         return jsonObject;
-
-
-        /*
-        if (reader.peek() == JsonToken.BEGIN_ARRAY){
-            reader.beginObject();
-            while (reader.hasNext()) {
-                return readJSONArray(reader);
-            }
-            reader.endObject();
-        }
-
-
-        if (reader.peek() == JsonToken.NAME){
-
-            String name = reader.nextName();
-
-            JSONObject jsonObject = new JSONObject();
-           // jsonObject.accumulate(name, readJSONObject(reader));
-
-            if ((reader.peek() == JsonToken.STRING) || (reader.peek() == JsonToken.NUMBER) ) {
-                jsonObject.accumulate(name, reader.nextString());
-            }
-
-            return  readValue(name, reader);
-
-        }
-        */
     }
 
     public JSONArray readJSONArrays(JsonReader reader) throws IOException, JSONException{
@@ -181,43 +151,3 @@ public class JSNParser {
 
 }
 
-
-
-
-
-    /*
-
-    public JSONObject readAllObjects(JsonReader reader) throws IOException {
-
-        while (reader.hasNext()) {
-            String name = reader.nextName();
-            if (name.equals("near_earth_objects"))
-                readDatesObjects(reader);
-            else
-                reader.skipValue();
-        }
-
-        JSONObject jsonObject = null;
-        JSONArray jsonArray = null;
-
-        if (reader.peek() == JsonToken.BEGIN_OBJECT) {
-            reader.beginObject();
-            while (reader.hasNext()) {
-                jsonObject = readAllObjects(reader);
-            }
-            reader.endObject();
-        }
-
-        if (reader.peek() == JsonToken.BEGIN_ARRAY) {
-            reader.beginArray();
-            while (reader.hasNext()) {
-                jsonArray = readAllArrays(reader);
-            }
-            reader.endArray();
-        }
-
-        return jsonObject;
-
-    }
-
-    */
