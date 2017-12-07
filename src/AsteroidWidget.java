@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -80,7 +80,7 @@ public class AsteroidWidget extends AppWidgetProvider {
 	    appWidgetManager.updateAppWidget(appWidgetIds, views);
 		
 		
-		// Update the Widget UI with the latest Earthquake details.
+		// Update the Widget UI with the latest Asteroid details.
 	    updateAsteroid(context, appWidgetManager, appWidgetIds);
 	}
 	
@@ -88,8 +88,8 @@ public class AsteroidWidget extends AppWidgetProvider {
 	public void onReceive(Context context, Intent intent){
 		super.onReceive(context, intent);
 
-	   // if (AsteroidUpdateService.QUAKES_REFRESHED.equals(intent.getAction()))
-	    //  updateQuake(context);
+	   if (AsteroidUpdateService.ASTEROID_REFRESHED.equals(intent.getAction()))
+	      updateAsteroid(context);
 	}
 	
 	
