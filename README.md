@@ -1,2 +1,2 @@
 # AsteroidServiceApp
-A service for displaying Asteroids as taken from NASA APIs
+An app which utilizes a service for displaying Asteroids pulled from NASA API 
