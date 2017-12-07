@@ -1,4 +1,4 @@
-package com.package com.asteroidserviceapp;
+package com.asteroidserviceapp;
 
 
 public class Asteroid {
