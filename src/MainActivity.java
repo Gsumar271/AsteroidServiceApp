@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -24,14 +24,11 @@ public class MainActivity extends Activity {
     TabListener<AsteroidListFragment> listTabListener;
     TabListener<AsteroidMapFragment> mapTabListener;
 
-    //MapView mapView;
-    String MyMapAPIKey = "AIzaSyCj6zIVy-lL0McinzKnW73FD2q56Rhb2DQ";// TODO [Get Map API Key];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // mapView = new MapView(this, MyMapAPIKey);
         setContentView(R.layout.activity_asteroid);
 
         updateFromPreferences();
