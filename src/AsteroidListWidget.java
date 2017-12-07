@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
