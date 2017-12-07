@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.preference.PreferenceActivity;
 import android.util.Log;
@@ -17,7 +17,6 @@ public class FragmentPreferences extends PreferenceActivity {
 	  @Override
 	  public void onBuildHeaders(List<Header> target){
 		  loadHeadersFromResource(R.xml.preference_headers, target);
-		  //Log.v("FragmentPreferences:", "FP" );
 
 	  }
 
