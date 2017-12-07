@@ -1,8 +1,5 @@
-package com.eugenesumaryev.myapipractice02;
+package com.package com.asteroidserviceapp;
 
-/**
- * Created by eugenesumaryev on 11/13/17.
- */
 
 public class Asteroid {
 
