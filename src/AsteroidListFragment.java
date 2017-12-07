@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.app.DialogFragment;
 import android.app.ListFragment;
@@ -18,9 +18,6 @@ import android.widget.SimpleCursorAdapter;
 
 import java.util.Date;
 
-/**
- * Created by eugenesumaryev on 11/13/17.
- */
 
 public class AsteroidListFragment extends ListFragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
