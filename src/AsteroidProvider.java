@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.app.SearchManager;
 import android.content.ContentProvider;
@@ -37,11 +37,6 @@ public class AsteroidProvider extends ContentProvider {
 	public static final String KEY_MAGNITUDE = "magnitude";
 	public static final String KEY_DIAMETER = "diameter";
 	public static final String KEY_MISS_DIST = "miss_distance";
-
-	//public static final String KEY_DATE = "date";
-	//public static final String KEY_DETAILS = "details";
-	//public static final String KEY_SUMMARY = "summary";
-	//public static final String KEY_LINK = "link";
 
 	AsteroidDatabaseHelper dbHelper;
 	@Override
@@ -87,8 +82,8 @@ public class AsteroidProvider extends ContentProvider {
 	  
 	private static final UriMatcher uriMatcher;
 	  
-	//Allocate the UriMatcher object, where a URI ending in 'earthquakes' will
-	//correspond to a request for all earthquakes, and 'earthquakes' with a
+	//Allocate the UriMatcher object, where a URI ending in 'ateroids' will
+	//correspond to a request for all asteroids, and 'asteroids' with a
 	//trailing '/[rowID]' will represent a single asteroid row.
 	static {
 	 uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
