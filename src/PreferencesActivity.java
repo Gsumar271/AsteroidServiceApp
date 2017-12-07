@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -16,34 +16,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Switch;
-
-
-/*
-public class PreferencesActivity extends PreferenceActivity {
-	
-
-	  public static final String PREF_AUTO_UPDATE = "PREF_AUTO_UPDATE";
-	  public static final String PREF_MIN_MAG = "PREF_MIN_MAG";
-	  public static final String PREF_UPDATE_FREQ = "PREF_UPDATE_FREQ";
-      public static final String USER_PREFERENCE = "USER_PREFERENCE";
-
-      public static final String PREF_MIN_MAG_INDEX = "PREF_MIN_MAG_INDEX";
-      public static final String PREF_UPDATE_FREQ_INDEX = "PREF_UPDATE_FREQ_INDEX";
-
- 
-	
-	@SuppressWarnings("deprecation")
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	    addPreferencesFromResource(R.xml.userpreferences);
-
-
-		
-}
-    
- 
-}
-*/
 
 
 
@@ -64,14 +36,12 @@ public class PreferencesActivity extends PreferenceActivity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.preferences);
-      //  addPreferencesFromResource(R.layout.preferences);
 
 
 	    updateFreqSpinner = (Spinner)findViewById(R.id.spinner_update_freq);
 	    magnitudeSpinner = (Spinner)findViewById(R.id.spinner_quake_mag);
 	    autoUpdate = (CheckBox)findViewById(R.id.checkbox_auto_update);
 
-        Log.v("PreferenceActivity:", "Preferences" );
 	
 	populateSpinners();
 	
@@ -104,46 +74,16 @@ public class PreferencesActivity extends PreferenceActivity {
 
 
 private void savePreferences() {
-	// int updateIndex = updateFreqSpinner.getSelectedItemPosition();
-    // int updateIndex;
 
     int updateIndex =  updateFreqSpinner.getSelectedItemPosition();
 
-
-    /* switch(checkUpdateIndex) {
-         case 0:
-             updateIndex = 1;
-             break;
-         case 1:
-             updateIndex = 5;
-             break;
-         case 2:
-             updateIndex = 10;
-             break;
-         case 3:
-             updateIndex = 15;
-             break;
-         case 4:
-             updateIndex = 60;
-             break;
-         default:
-             updateIndex = 15;
-             break;
-     }
-     */
-
 	 int minMagIndex = magnitudeSpinner.getSelectedItemPosition();
-    // int minMagIndex = 3;
 	 boolean autoUpdateChecked = autoUpdate.isChecked();
 
 	 Editor editor = prefs.edit();
 	 editor.putBoolean(PREF_AUTO_UPDATE, autoUpdateChecked);
 	 editor.putInt(PREF_UPDATE_FREQ_INDEX, updateIndex);
 	 editor.putInt(PREF_MIN_MAG_INDEX, minMagIndex);
-
-    // Log.v("savepreferencescheck:", String.valueOf(autoUpdateChecked) );
-   //  Log.v("updatefrmprferencindx:", String.valueOf(updateIndex) );
-    // Log.v("updtfrmprefernsmimg:", String.valueOf(minMagIndex) );
 
 	 editor.commit();
 	
