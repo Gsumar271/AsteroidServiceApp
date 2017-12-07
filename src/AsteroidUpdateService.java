@@ -1,4 +1,4 @@
-package com.eugenesumaryev.myapipractice02;
+package com.asteroidserviceapp;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -199,9 +199,7 @@ public class AsteroidUpdateService extends IntentService {
 	  
 	  @Override
 	  public void onCreate() {
-	    /*
-	     * updateTimer = new Timer("earthquakeUpdates");
-	     * */
+
 		super.onCreate();
 		  alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 
