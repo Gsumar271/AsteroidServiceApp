@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
-  <header android:fragment="com.UserPreferenceFragment"
+  <header android:fragment="com.asteroidserviceapp.UserPreferenceFragment"
           android:title="Settings"
           android:summary="Asteroid Refresh Settings" />
 </preference-headers>
