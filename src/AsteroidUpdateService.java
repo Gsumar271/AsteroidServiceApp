@@ -69,11 +69,33 @@ public class AsteroidUpdateService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+	 
+      	Context context = getApplicationContext();
+
+	SharedPreferences prefs =
+			PreferenceManager.getDefaultSharedPreferences(context);
+
+	int updateFreq =
+			prefs.getInt(PreferencesActivity.PREF_UPDATE_FREQ_INDEX,60);
+
+	boolean autoUpdateChecked =
+			prefs.getBoolean(PreferencesActivity.PREF_AUTO_UPDATE, false);
+
+	if (autoUpdateChecked) {
+		int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
+		long timeToRefresh = SystemClock.elapsedRealtime() +
+				updateFreq*60*100;
+		alarmManager.setInexactRepeating(alarmType, timeToRefresh,
+				updateFreq*60*100, alarmIntent);
+	}
+	else
+		alarmManager.cancel(alarmIntent);
+	    
       refreshAsteroids();
+
       sendBroadcast(new Intent(ASTEROIDS_REFRESHED));
       
 
-      Context context = getApplicationContext();
       AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
       ComponentName earthquakeWidget =
         new ComponentName(context, AsteroidListWidget.class);
