@@ -22,8 +22,7 @@ import android.widget.SearchView;
 
 public class MainActivity extends Activity {
     TabListener<AsteroidListFragment> listTabListener;
-    TabListener<AsteroidMapFragment> mapTabListener;
-
+    TabListener<AsteroidWebFragment> webTabListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +58,17 @@ public class MainActivity extends Activity {
             actionBar.addTab(listTab);
 
 
-            // Create and add the map tab.
-            ActionBar.Tab mapTab = actionBar.newTab();
+            ActionBar.Tab webTab = actionBar.newTab();
 
-            mapTabListener = new TabListener<AsteroidMapFragment>
-                    (this, R.id.AsteroidFragmentContainer, AsteroidMapFragment.class);
+            webTabListener = new TabListener<AsteroidWebFragment>
+                    (this, R.id.AsteroidFragmentContainer, AsteroidWebFragment.class);
 
-            mapTab.setText("Map")
-                    .setContentDescription("Map of earthquakes")
-                    .setTabListener(mapTabListener);
+            webTab.setText("Web")
+                    .setContentDescription("Asteroid info")
+                    .setTabListener(webTabListener);
 
-            actionBar.addTab(mapTab);
+            actionBar.addTab(webTab);
+
 
         }
 
@@ -102,17 +101,6 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item){
         super.onOptionsItemSelected(item);
 
-     //   Log.v("MainActivityOptions:", String.valueOf(MENU_PREFERENCES) );
-     //   Log.v("MainActivityOptionsID:", String.valueOf(item.getItemId()) );
-
-        /*
-        Class c =
-                FragmentPreferences.class;
-        Intent i = new Intent(this, c);
-        startActivityForResult(i, SHOW_PREFERENCES);
-       // return true;
-       */
-
 
         switch (item.getItemId()) {
             case (R.id.menu_refresh): {
@@ -125,10 +113,6 @@ public class MainActivity extends Activity {
                Class c = Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB ?
                         PreferencesActivity.class : FragmentPreferences.class;
 
-              //  Log.v("MainActivity:", String.valueOf(MENU_PREFERENCES) );
-
-              /*  Class c =
-                        PreferencesActivity.class; */
                 Intent i = new Intent(this, c);
                 startActivityForResult(i, SHOW_PREFERENCES);
                 return true;
@@ -146,15 +130,11 @@ public class MainActivity extends Activity {
         Context context = getApplicationContext();
         SharedPreferences prefs =
                 PreferenceManager.getDefaultSharedPreferences(context);
-        //Log.v("updatefrompreferences:", String.valueOf(minimumMagnitude) );
 
         minimumMagnitude = prefs.getInt(PreferencesActivity.PREF_MIN_MAG_INDEX,3);
-               // Integer.parseInt(prefs.getString(PreferencesActivity.PREF_MIN_MAG_INDEX,"3"));
-              //  Integer.valueOf(prefs.getString(PreferencesActivity.PREF_MIN_MAG_INDEX,"3"));
-       // Log.v("prefString:", String.valueOf(Integer.valueOf(prefs.getString(PreferencesActivity.PREF_MIN_MAG_INDEX, "3"))));
+
         updateFreq = prefs.getInt(PreferencesActivity.PREF_UPDATE_FREQ_INDEX,60);
-               // Integer.parseInt(prefs.getString(PreferencesActivity.PREF_UPDATE_FREQ_INDEX,"60"));
-             // Integer.valueOf(prefs.getString(PreferencesActivity.PREF_UPDATE_FREQ_INDEX,"60"));
+
         autoUpdateChecked = prefs.getBoolean(PreferencesActivity.PREF_AUTO_UPDATE, false);
     }
 
@@ -185,8 +165,10 @@ public class MainActivity extends Activity {
 
             // Detach each of the Fragments
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            if (mapTabListener.fragment != null)
-               ft.detach(mapTabListener.fragment);
+
+            if (webTabListener.fragment != null)
+                ft.detach(webTabListener.fragment);
+
             if (listTabListener.fragment != null)
                 ft.detach(listTabListener.fragment);
             ft.commit();
@@ -206,8 +188,6 @@ public class MainActivity extends Activity {
             // Find the recreated Fragments and assign them to their associated Tab Listeners.
             listTabListener.fragment =
                     getFragmentManager().findFragmentByTag(AsteroidListFragment.class.getName());
-           // mapTabListener.fragment =
-           //         getFragmentManager().findFragmentByTag(AsteroidMapFragment.class.getName());
 
             // Restore the previous Action Bar tab selection.
             SharedPreferences sp = getPreferences(Activity.MODE_PRIVATE);
@@ -268,6 +248,8 @@ public class MainActivity extends Activity {
                 ft.attach(fragment);
         }
     }
+
+
 
 
 
